@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <title>tiny carousel</title>
+  <link rel="stylesheet" href="tiny-carousel.css">
+  <style>
+    body {
+      margin: 0;
+    }
+    #carousel {
+      height: 400px;
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+<div class="tiny-carousel" id="carousel">
+  <div class="items">
+    <div class="item">
+      <a href="javascript:">
+        <img src="http://img.dev.yszjdx.com/cmcc/ad/20141126/5475508a286f5.png">
+      </a>
+    </div>
+    <div class="item">
+      <a href="javascript:">
+        <img src="http://img.dev.yszjdx.com/cmcc/ad/20141126/547550ab40cf8.png">
+      </a>
+    </div>
+    <div class="item">
+      <a href="javascript:">
+        <img src="http://bbs.gxun.cn/template/test/common/images/xiaoyunhui.jpg">
+      </a>
+    </div>
+    <div class="item">
+      <a href="javascript:">
+        <img src="http://bbs.gxun.cn/template/test/common/images/pxk.jpg">
+      </a>
+    </div>
+  </div>
+</div>
+<script src="tiny-carousel.js"></script>
+<script>
+  new TinyCarousel(document.getElementById('carousel'))
+</script>
+</body>
+</html>

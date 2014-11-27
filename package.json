@@ -1,0 +1,8 @@
+{
+  "name": "tiny-carousel",
+  "version": "0.0.0",
+  "description": "tiny carousel without jquery",
+  "main": "tiny-carousel.js",
+  "author": "Qiu Xiang <xiang.qiu@qq.com>",
+  "license": "MIT"
+}
