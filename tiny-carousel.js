@@ -18,6 +18,21 @@ var TinyCarousel = (function () {
     this.items = query(this.element, '.item')
     this.goto(0)
     this.eventListen()
+
+    window.addEventListener('load', proxy(this.setHeight, this))
+  }
+
+  TinyCarousel.prototype.setHeight = function () {
+    var minHeight = Number.MAX_VALUE
+
+    for (var i = 0; i < this.items.length; i++) {
+      var height = query(this.items[i], 'img')[0].clientHeight
+      if (height < minHeight) {
+        minHeight = height
+      }
+    }
+
+    this.element.style.height = minHeight + 'px'
   }
 
   TinyCarousel.prototype.eventListen = function () {
