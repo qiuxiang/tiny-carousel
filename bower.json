@@ -1,5 +1,6 @@
 {
   "name": "tiny-carousel",
+  "description": "tiny carousel without jquery",
   "version": "0.0.1",
   "authors": [
     "Qiu Xiang <xiang.qiu@qq.com>"
@@ -9,7 +10,7 @@
     "**/.*",
     "bower_components"
   ],
-  "keyword": ["carousel"],
+  "keyword": ["carousel", "touch"],
   "dependencies": {
     "touchjs": "~0.2.14"
   },
