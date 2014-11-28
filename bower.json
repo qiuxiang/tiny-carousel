@@ -1,20 +1,20 @@
 {
   "name": "tiny-carousel",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "Qiu Xiang <xiang.qiu@qq.com>"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components"
   ],
+  "keyword": ["carousel"],
   "dependencies": {
     "touchjs": "~0.2.14"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/qiuxiang/tiny-carousel.git"
+    "url": "git://github.com/qiuxiang/tiny-carousel.git"
   }
 }
