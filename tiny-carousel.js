@@ -8,11 +8,23 @@ var TinyCarousel = (function () {
     return source
   }
 
+  function proxy(fn, context) {
+    return function () { fn.apply(context) }
+  }
+
   var TinyCarousel = function (element, options) {
     this.element = element
     this.options = merge({ interval: 5000 }, options)
     this.items = query(this.element, '.item')
     this.goto(0)
+    this.eventListen()
+  }
+
+  TinyCarousel.prototype.eventListen = function () {
+    if (typeof touch != 'undefined') {
+      touch.on(this.element, 'swiperight', proxy(this.prev, this))
+      touch.on(this.element, 'swipeleft', proxy(this.next, this))
+    }
   }
 
   TinyCarousel.prototype.goto = function (index) {
@@ -29,11 +41,8 @@ var TinyCarousel = (function () {
   }
 
   TinyCarousel.prototype.cycle = function () {
-    var self = this
     this.interval && clearInterval(this.interval)
-    this.interval = setInterval(function () {
-      self.next()
-    }, this.options.interval)
+    this.interval = setInterval(proxy(this.next, this), this.options.interval)
   }
 
   TinyCarousel.prototype.next = function () {
@@ -45,4 +54,4 @@ var TinyCarousel = (function () {
   }
 
   return TinyCarousel
-})();
+})()
