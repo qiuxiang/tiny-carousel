@@ -12,8 +12,8 @@ var TinyCarousel = (function () {
     return function () { fn.apply(context) }
   }
 
-  var TinyCarousel = function (element, options) {
-    this.element = element
+  var TinyCarousel = function (selector, options) {
+    this.element = query(document, selector)[0]
     this.options = merge({ interval: 5000 }, options)
     this.items = query(this.element, '.item')
     this.goto(0)
