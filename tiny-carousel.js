@@ -16,23 +16,26 @@ var TinyCarousel = (function () {
     this.element = query(document, selector)[0]
     this.options = merge({ interval: 5000 }, options)
     this.items = query(this.element, '.item')
+    this.images = query(this.element, '.item img')
     this.goto(0)
     this.eventListen()
 
-    window.addEventListener('load', proxy(this.setHeight, this))
+    for (var i = 0; i < this.images.length; i++) {
+      this.images[i].addEventListener('load', proxy(this.setHeight, this))
+    }
   }
 
   TinyCarousel.prototype.setHeight = function () {
-    var minHeight = Number.MAX_VALUE
+    var maxHeight = 0
 
     for (var i = 0; i < this.items.length; i++) {
       var height = query(this.items[i], 'img')[0].clientHeight
-      if (height < minHeight) {
-        minHeight = height
+      if (height > maxHeight) {
+        maxHeight = height
       }
     }
 
-    this.element.style.height = minHeight + 'px'
+    this.element.style.height = maxHeight + 'px'
   }
 
   TinyCarousel.prototype.eventListen = function () {
