@@ -17,12 +17,29 @@ var TinyCarousel = (function () {
     this.options = merge({ interval: 5000 }, options)
     this.items = query(this.element, '.item')
     this.images = query(this.element, '.item img')
-    this.goto(0)
     this.eventListen()
+    this.createIndicators()
+    this.goto(0)
 
     for (var i = 0; i < this.images.length; i++) {
       this.images[i].addEventListener('load', proxy(this.setHeight, this))
     }
+  }
+
+  TinyCarousel.prototype.createIndicators = function () {
+    var indicators = document.createElement('ol')
+    indicators.className = 'indicators'
+    for (var i = 0; i < this.items.length; i++) {
+      (function(i, self){
+        var indicator = document.createElement('li')
+        indicator.addEventListener('click', function () {
+          self.goto(i)
+        })
+        indicators.appendChild(indicator)
+      })(i, this)
+    }
+    this.element.appendChild(indicators)
+    this.indicators = indicators.getElementsByTagName('li')
   }
 
   TinyCarousel.prototype.setHeight = function () {
@@ -50,9 +67,11 @@ var TinyCarousel = (function () {
     for (var i = 0; i < this.items.length; i++) {
       if (i == index) {
         this.items[i].classList.add('active')
+        this.indicators[i].classList.add('active')
         this.active = i
       } else {
         this.items[i].classList.remove('active')
+        this.indicators[i].classList.remove('active')
       }
     }
     this.cycle()
