@@ -13,6 +13,7 @@
 }
 .tiny-carousel .item.active {
   opacity: 1;
+  z-index: 1;
 }
 .tiny-carousel .indicators {
   list-style: none;
